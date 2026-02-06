@@ -2,10 +2,6 @@
 
 This is a 100% free, local-first document Q&A system that lets you upload any PDF and chat with its content instantly. Perfect portfolio project for CSE students - demonstrates production-ready RAG skills without spending a single rupee on APIs.
 
-Prerequisites
-☑️ Python 3.8+
-☑️ 8GB RAM (16GB smooth)
-☑️ 2GB free disk space
 
 System Requirements
 Spec	     Minimum	    Recommended
