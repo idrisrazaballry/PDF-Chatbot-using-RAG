@@ -7,6 +7,13 @@ Prerequisites
 ☑️ 8GB RAM (16GB smooth)
 ☑️ 2GB free disk space
 
+System Requirements
+Spec	     Minimum	    Recommended
+RAM	      8GB	         16GB
+Storage	  2GB free	    5GB free
+CPU	     Intel i3	    Intel i5+
+GPU	      None	       Optional
+
 Tech Stack
 Frontend: Streamlit
 RAG: LangChain Community + FAISS
