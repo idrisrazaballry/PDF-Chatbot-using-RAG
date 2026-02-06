@@ -14,6 +14,20 @@ Embeddings: sentence-transformers/all-MiniLM-L6-v2 (FREE)
 PDF: PyPDFLoader
 Deployment: Streamlit Cloud / GitHub
 
+
+### Installation & Run
+```bash
+# Clone/Download project
+git clone YOUR_GITHUB_REPO
+cd free-rag-chatbot
+
+# Install (one command)
+pip install -r requirements.txt
+
+# Run
+streamlit run app_free.py
+
+
 WorkFlow
 1. PDF UPLOAD
    User drags PDF (research paper/textbook/notes)
