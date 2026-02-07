@@ -1,5 +1,5 @@
 """
-🚀 FIXED RAG PDF Chatbot - LangChain 0.3+ Compatible (Feb 2026)
+FIXED RAG PDF Chatbot - LangChain 0.3+ Compatible (Feb 2026)
 """
 
 import streamlit as st
@@ -32,11 +32,11 @@ def process_pdf(_pdf_path):
 
 # Sidebar API Key
 with st.sidebar:
-    st.header("🔑 API Key")
+    st.header("API Key")
     api_key = st.text_input("OpenAI API Key", type="password", 
                           help="https://platform.openai.com/api-keys")
     if not api_key:
-        st.warning("⚠️ Enter OpenAI API key!")
+        st.warning("Enter OpenAI API key!")
         st.stop()
     os.environ["OPENAI_API_KEY"] = api_key
 
@@ -80,17 +80,17 @@ with col1:
             tmp.write(uploaded_file.getvalue())
             pdf_path = tmp.name
         
-        if st.button("🔄 Process PDF", type="primary"):
+        if st.button("Process PDF", type="primary"):
             with st.spinner("Processing..."):
                 st.session_state.vectorstore = process_pdf(pdf_path)
                 st.session_state.messages = []
-                st.success("✅ Ready to chat!")
+                st.success("Ready to chat!")
 
 with col2:
     if st.session_state.vectorstore:
-        st.success("📄 PDF Loaded!")
+        st.success("PDF Loaded!")
     else:
-        st.info("👆 Upload PDF first")
+        st.info("Upload PDF first")
 
 # Chat
 if st.session_state.vectorstore:
@@ -111,9 +111,10 @@ if st.session_state.vectorstore:
                 st.write(response)
                 st.session_state.messages.append({"role": "assistant", "content": response})
     
-    if st.button("🗑️ Clear Chat"):
+    if st.button("Clear Chat"):
         st.session_state.messages = []
         st.rerun()
 
 else:
-    st.info("👆 Upload & process PDF first!")
+    st.info(" Upload & process PDF first!")
+
