@@ -13,7 +13,7 @@ st.set_page_config(layout="wide")
 if "vectorstore" not in st.session_state:
     st.session_state.vectorstore = None
 
-st.title("📚 FREE RAG PDF Chatbot")
+st.title("FREE RAG PDF Chatbot")
 st.markdown("**Zero cost, local models only!**")
 
 # File upload
@@ -109,3 +109,4 @@ else:
     - ✅ Fast on laptop (Phi-3 mini)
     - ✅ Real RAG implementation
     """)
+
