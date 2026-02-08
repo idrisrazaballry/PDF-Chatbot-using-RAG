@@ -5,10 +5,3 @@ langchain-openai==0.2.1
 langchain-core==0.3.6
 faiss-cpu==1.8.0
 pypdf==5.1.0
-
-
-fghjkwedf
-gqwhejkfgh;jk
-ghwejrktly;
-hqwjekrlt;
-hwejrt
