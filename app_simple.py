@@ -12,13 +12,13 @@ if "vectorstore" not in st.session_state:
 
 # API Key (sidebar)
 with st.sidebar:
-    api_key = st.text_input("🔑 OpenAI API Key", type="password")
+    api_key = st.text_input(" OpenAI API Key", type="password")
     if not api_key:
         st.warning("Enter API key first!")
         st.stop()
     os.environ["OPENAI_API_KEY"] = api_key
 
-st.title("📚 RAG PDF Chatbot")
+st.title("RAG PDF Chatbot")
 
 # File upload
 uploaded_file = st.file_uploader("Upload PDF", type="pdf")
@@ -27,7 +27,7 @@ if uploaded_file:
         tmp.write(uploaded_file.getvalue())
         pdf_path = tmp.name
     
-    if st.button("🔄 Process PDF", type="primary"):
+    if st.button("Process PDF", type="primary"):
         with st.spinner("Processing..."):
             # Load & split
             loader = PyPDFLoader(pdf_path)
@@ -38,7 +38,7 @@ if uploaded_file:
             # Vector store
             embeddings = OpenAIEmbeddings()
             st.session_state.vectorstore = FAISS.from_documents(chunks, embeddings)
-            st.success("✅ Ready to chat!")
+            st.success(" Ready to chat!")
 
 # Chat
 if st.session_state.vectorstore:
@@ -64,4 +64,5 @@ if st.session_state.vectorstore:
             st.session_state["messages"].append({"role": "assistant", "content": response.content})
 
 else:
-    st.info("👆 Upload PDF → Process → Chat!")
+    st.info(" Upload PDF → Process → Chat!")
+
