@@ -99,15 +99,16 @@ Answer:"""
             st.session_state["messages"].append({"role": "assistant", "content": answer})
 
 else:
-    st.info("👆 Upload PDF → Process → Chat FREE!")
+    st.info("Upload PDF → Process → Chat FREE!")
     
     st.markdown("""
-    ### 🌟 Why This is Perfect for You:
-    - ✅ **₹0 cost forever**
-    - ✅ Offline after first download  
-    - ✅ Portfolio-ready (shows local AI skills)
-    - ✅ Fast on laptop (Phi-3 mini)
-    - ✅ Real RAG implementation
+    ###  Why This is Perfect for You:
+    - **₹0 cost forever**
+    - Offline after first download  
+    -  Portfolio-ready (shows local AI skills)
+    -  Fast on laptop (Phi-3 mini)
+    -  Real RAG implementation
     """)
+
 
 
