@@ -23,7 +23,7 @@ if uploaded_file:
         tmp.write(uploaded_file.getvalue())
         pdf_path = tmp.name
     
-    if st.button("🔄 Process PDF", type="primary"):
+    if st.button("Process PDF", type="primary"):
         with st.spinner("Processing PDF (local)..."):
             # Load & split
             loader = PyPDFLoader(pdf_path)
@@ -38,11 +38,11 @@ if uploaded_file:
             
             # Create vector store
             st.session_state.vectorstore = FAISS.from_documents(chunks, embeddings)
-            st.success("✅ FREE local processing complete!")
+            st.success(" FREE local processing complete!")
 
 # Chat (FREE local LLM)
 if st.session_state.vectorstore:
-    st.subheader("💬 Chat with your PDF")
+    st.subheader(" Chat with your PDF")
     
     # FREE local model (Phi-3 mini - fast & good)
     @st.cache_resource
@@ -109,4 +109,5 @@ else:
     - ✅ Fast on laptop (Phi-3 mini)
     - ✅ Real RAG implementation
     """)
+
 
