@@ -68,7 +68,7 @@ def create_simple_rag(vectorstore):
     return chain
 
 # UI
-st.title("📚 RAG PDF Chatbot")
+st.title(" RAG PDF Chatbot")
 st.markdown("*Upload PDF → Process → Chat instantly!*")
 
 col1, col2 = st.columns([3, 1])
@@ -117,4 +117,5 @@ if st.session_state.vectorstore:
 
 else:
     st.info(" Upload & process PDF first!")
+
 
