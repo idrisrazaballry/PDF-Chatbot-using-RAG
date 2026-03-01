@@ -117,6 +117,3 @@ if st.session_state.vectorstore:
 
 else:
     st.info(" Upload & process PDF first!")
-
-
-fghj
