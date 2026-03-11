@@ -66,3 +66,10 @@ if st.session_state.vectorstore:
 else:
     st.info(" Upload PDF → Process → Chat!")
 
+
+fg;'
+                 ';lkh'
+';lkjhl;'
+';lkjhjkl;
+'lkjhjk;'
+';lkjhjkl;
