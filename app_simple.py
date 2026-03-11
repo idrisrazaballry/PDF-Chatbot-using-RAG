@@ -69,7 +69,4 @@ else:
 
 fg;'
                  ';lkh'
-';lkjhl;'
-';lkjhjkl;
-'lkjhjk;'
-';lkjhjkl;
+';l
