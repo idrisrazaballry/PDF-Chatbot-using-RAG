@@ -77,12 +77,8 @@ kjhl;'
 ';lkjkl;'
 ';lkjkl;'
 ';lkjk'
-';lkjkl'
-';lkkl'
-';lkk'
-';lkl
-';lkl
-';lkk
+';lkjkl
 ';lkk'
 ';lkjk
 ';lkkl;'
+
