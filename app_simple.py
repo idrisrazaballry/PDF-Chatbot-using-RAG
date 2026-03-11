@@ -70,8 +70,3 @@ else:
 fghjkl;'
 kjhl;'
 ';lkj;'
-;lk
-';lkjk
-';lkk'
-';lkjk
-';l
