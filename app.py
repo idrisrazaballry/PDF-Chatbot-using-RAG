@@ -5,7 +5,7 @@ FIXED RAG PDF Chatbot - LangChain 0.3+ Compatible (Feb 2026)
 import streamlit as st
 import os
 import tempfile
-from langchain_community.document_loaders import PyPDFLoader
+from langchain.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import FAISS
