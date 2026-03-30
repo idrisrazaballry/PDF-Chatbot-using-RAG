@@ -52,3 +52,12 @@ WorkFlow
    User: "What is main topic?"
    → Retrieve TOP 3 most similar chunks
    → Show relevant PDF sections instantly!
+
+lkjl;'
+';lk'
+';lk
+';lk
+;lk';lkkl;'
+';lkl;'
+';lkk'
+';l
