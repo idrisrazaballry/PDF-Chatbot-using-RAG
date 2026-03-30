@@ -54,7 +54,3 @@ WorkFlow
    → Show relevant PDF sections instantly!
 
 lkjl;'
-';lk'
-';lk
-';lk
-;lk';lkkl;'
