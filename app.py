@@ -43,7 +43,7 @@ def process_pdf(_pdf_path):
     )
     chunks = splitter.split_documents(docs)
 
-    # ✅ Free HuggingFace embeddings — no OpenAI billing for this step
+    #  Free HuggingFace embeddings — no OpenAI billing for this step
     embeddings = load_embeddings()
     vectorstore = FAISS.from_documents(chunks, embeddings)
     return vectorstore
@@ -51,7 +51,7 @@ def process_pdf(_pdf_path):
 
 # Sidebar — API Key (only needed for GPT chat responses now)
 with st.sidebar:
-    st.header("🔑 OpenAI API Key")
+    st.header(" OpenAI API Key")
     st.caption("Only used for chat responses. PDF processing is 100% free!")
     api_key = st.text_input(
         "OpenAI API Key",
@@ -59,12 +59,12 @@ with st.sidebar:
         help="Get your key at https://platform.openai.com/api-keys"
     )
     if not api_key:
-        st.warning("⚠️ Enter your OpenAI API key to start chatting.")
+        st.warning(" Enter your OpenAI API key to start chatting.")
         st.stop()
     os.environ["OPENAI_API_KEY"] = api_key
 
     st.divider()
-    st.markdown("**💡 Cost Tip**")
+    st.markdown("** Cost Tip**")
     st.caption(
         "Embeddings use a free local model (all-MiniLM-L6-v2). "
         "Only chat responses consume your OpenAI credits."
@@ -146,7 +146,7 @@ if st.session_state.vectorstore:
                     {"role": "assistant", "content": response}
                 )
 
-    if st.button("🗑️ Clear Chat"):
+    if st.button(" Clear Chat"):
         st.session_state.messages = []
         st.rerun()
 
