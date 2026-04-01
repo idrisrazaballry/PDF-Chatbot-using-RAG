@@ -8,3 +8,4 @@ openai
 tiktoken
 langchain-huggingface
 sentence-transformers
+langchain-groq
