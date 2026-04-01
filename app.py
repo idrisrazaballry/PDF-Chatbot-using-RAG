@@ -1,6 +1,6 @@
 """
-🚀 RAG PDF Chatbot - LangChain 0.3+ Compatible
-✅ Fixed: Uses FREE HuggingFace embeddings instead of paid OpenAI embeddings
+ RAG PDF Chatbot - LangChain 0.3+ Compatible
+ Fixed: Uses FREE HuggingFace embeddings instead of paid OpenAI embeddings
 """
 
 import streamlit as st
@@ -8,8 +8,8 @@ import os
 import tempfile
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings   # ✅ Free embeddings
-from langchain_openai import ChatOpenAI                    # ✅ Keep GPT for chat only
+from langchain_huggingface import HuggingFaceEmbeddings   #  Free embeddings
+from langchain_openai import ChatOpenAI                    #  Keep GPT for chat only
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -27,7 +27,7 @@ if "messages" not in st.session_state:
 def load_embeddings():
     """
     Load HuggingFace sentence-transformers model once and reuse.
-    ✅ Completely free — no API key or billing required.
+     Completely free — no API key or billing required.
     """
     return HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
