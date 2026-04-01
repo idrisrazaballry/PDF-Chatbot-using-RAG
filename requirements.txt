@@ -6,3 +6,5 @@ faiss-cpu
 pypdf
 openai
 tiktoken
+langchain-huggingface
+sentence-transformers
