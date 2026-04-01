@@ -100,7 +100,7 @@ def create_rag_chain(vectorstore):
 
 # ── UI ────────────────────────────────────────────────────────────────────────
 
-st.title("📚 RAG PDF Chatbot")
+st.title(" RAG PDF Chatbot")
 st.markdown("*Upload any PDF → Process for free → Chat with GPT-4o-mini!*")
 
 col1, col2 = st.columns([3, 1])
@@ -112,17 +112,17 @@ with col1:
             tmp.write(uploaded_file.getvalue())
             pdf_path = tmp.name
 
-        if st.button("🔄 Process PDF", type="primary"):
+        if st.button(" Process PDF", type="primary"):
             with st.spinner("Processing with free HuggingFace embeddings..."):
                 st.session_state.vectorstore = process_pdf(pdf_path)
                 st.session_state.messages = []
-                st.success("✅ PDF processed — ready to chat!")
+                st.success(" PDF processed — ready to chat!")
 
 with col2:
     if st.session_state.vectorstore:
-        st.success("📄 PDF Loaded!")
+        st.success(" PDF Loaded!")
     else:
-        st.info("👆 Upload a PDF first")
+        st.info(" Upload a PDF first")
 
 # ── Chat Interface ─────────────────────────────────────────────────────────────
 
@@ -151,4 +151,4 @@ if st.session_state.vectorstore:
         st.rerun()
 
 else:
-    st.info("👆 Upload & process a PDF to start chatting!")
+    st.info(" Upload & process a PDF to start chatting!")
