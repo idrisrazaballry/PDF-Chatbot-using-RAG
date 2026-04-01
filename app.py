@@ -1,6 +1,6 @@
 """
- RAG PDF Chatbot - LangChain 0.3+ Compatible
- Fixed: Uses FREE HuggingFace embeddings instead of paid OpenAI embeddings
+🚀 RAG PDF Chatbot - LangChain 0.3+ Compatible
+✅ 100% FREE: HuggingFace embeddings + Groq LLM (no OpenAI billing needed)
 """
 
 import streamlit as st
@@ -8,8 +8,8 @@ import os
 import tempfile
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings   #  Free embeddings
-from langchain_openai import ChatOpenAI                    #  Keep GPT for chat only
+from langchain_huggingface import HuggingFaceEmbeddings      # ✅ Free embeddings
+from langchain_groq import ChatGroq                           # ✅ Free LLM via Groq
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -26,8 +26,7 @@ if "messages" not in st.session_state:
 @st.cache_resource
 def load_embeddings():
     """
-    Load HuggingFace sentence-transformers model once and reuse.
-     Completely free — no API key or billing required.
+    HuggingFace sentence-transformers — runs locally, completely free.
     """
     return HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
@@ -42,39 +41,41 @@ def process_pdf(_pdf_path):
         chunk_size=1000, chunk_overlap=150
     )
     chunks = splitter.split_documents(docs)
-
-    #  Free HuggingFace embeddings — no OpenAI billing for this step
     embeddings = load_embeddings()
     vectorstore = FAISS.from_documents(chunks, embeddings)
     return vectorstore
 
 
-# Sidebar — API Key (only needed for GPT chat responses now)
+# ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.header(" OpenAI API Key")
-    st.caption("Only used for chat responses. PDF processing is 100% free!")
-    api_key = st.text_input(
-        "OpenAI API Key",
+    st.header("🔑 Groq API Key")
+    st.caption("Free forever — get yours at groq.com/keys")
+    groq_api_key = st.text_input(
+        "Groq API Key",
         type="password",
-        help="Get your key at https://platform.openai.com/api-keys"
+        help="Sign up free at https://console.groq.com/keys"
     )
-    if not api_key:
-        st.warning(" Enter your OpenAI API key to start chatting.")
+    if not groq_api_key:
+        st.warning("⚠️ Enter your Groq API key to start chatting.")
+        st.markdown("[🔗 Get a free Groq key](https://console.groq.com/keys)")
         st.stop()
-    os.environ["OPENAI_API_KEY"] = api_key
+    os.environ["GROQ_API_KEY"] = groq_api_key
 
     st.divider()
-    st.markdown("** Cost Tip**")
-    st.caption(
-        "Embeddings use a free local model (all-MiniLM-L6-v2). "
-        "Only chat responses consume your OpenAI credits."
-    )
+    st.markdown("**💡 100% Free Stack**")
+    st.caption("📄 Embeddings: HuggingFace all-MiniLM-L6-v2 (local)")
+    st.caption("🤖 Chat: Groq + LLaMA3 (free API)")
 
 
-def create_rag_chain(vectorstore):
+def create_rag_chain(vectorstore, api_key):
     retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
 
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+    # ✅ Free Groq LLM — LLaMA3 is fast and accurate
+    llm = ChatGroq(
+        model="llama3-8b-8192",
+        temperature=0,
+        groq_api_key=api_key
+    )
 
     prompt = ChatPromptTemplate.from_template("""
     Use ONLY the following context to answer the question.
@@ -99,9 +100,8 @@ def create_rag_chain(vectorstore):
 
 
 # ── UI ────────────────────────────────────────────────────────────────────────
-
-st.title(" RAG PDF Chatbot")
-st.markdown("*Upload any PDF → Process for free → Chat with GPT-4o-mini!*")
+st.title("📚 RAG PDF Chatbot")
+st.markdown("*Upload any PDF → Process for free → Chat instantly — 100% free!*")
 
 col1, col2 = st.columns([3, 1])
 
@@ -112,22 +112,21 @@ with col1:
             tmp.write(uploaded_file.getvalue())
             pdf_path = tmp.name
 
-        if st.button(" Process PDF", type="primary"):
+        if st.button("🔄 Process PDF", type="primary"):
             with st.spinner("Processing with free HuggingFace embeddings..."):
                 st.session_state.vectorstore = process_pdf(pdf_path)
                 st.session_state.messages = []
-                st.success(" PDF processed — ready to chat!")
+                st.success("✅ PDF processed — ready to chat!")
 
 with col2:
     if st.session_state.vectorstore:
-        st.success(" PDF Loaded!")
+        st.success("📄 PDF Loaded!")
     else:
-        st.info(" Upload a PDF first")
+        st.info("👆 Upload a PDF first")
 
 # ── Chat Interface ─────────────────────────────────────────────────────────────
-
 if st.session_state.vectorstore:
-    chain = create_rag_chain(st.session_state.vectorstore)
+    chain = create_rag_chain(st.session_state.vectorstore, groq_api_key)
 
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):
@@ -146,9 +145,9 @@ if st.session_state.vectorstore:
                     {"role": "assistant", "content": response}
                 )
 
-    if st.button(" Clear Chat"):
+    if st.button("🗑️ Clear Chat"):
         st.session_state.messages = []
         st.rerun()
 
 else:
-    st.info(" Upload & process a PDF to start chatting!")
+    st.info("👆 Upload & process a PDF to start chatting!")
