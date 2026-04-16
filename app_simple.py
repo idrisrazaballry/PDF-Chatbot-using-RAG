@@ -70,6 +70,4 @@ else:
     ';lkjhgfgh;'
     ';lkjhghjkl;'
     ';lkjhghjkl;'
-    ';lkjhgghjkl;'
-    ';lkjhghjkl;'
-    ';lkj
+    ';lkjh
