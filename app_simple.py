@@ -68,6 +68,4 @@ else:
     sdfghjkl;'
     ';lkjhgfghjkl;'
     ';lkjhgfgh;'
-    ';lkjhghjkl;'
-    ';lkjhghjkl;'
-    ';lkjh
+    ';l
