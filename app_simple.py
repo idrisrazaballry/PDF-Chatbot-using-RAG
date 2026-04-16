@@ -72,9 +72,4 @@ else:
     ';lkjhghjkl;'
     ';lkjhgghjkl;'
     ';lkjhghjkl;'
-    ';lkjhghjkl;'
-    ';lkjhghjkl;'
-    ';lkjhghjkl;'
-    ';lkjhghjkl;'
-    ';lkjhghjkl;'
-    
+    ';lkj
