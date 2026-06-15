@@ -88,7 +88,7 @@ Answer:""")
     return chain
 
 # UI
-st.title("📚 RAG PDF Chatbot (Groq)")
+st.title("RAG PDF Chatbot (Groq)")
 st.markdown("*Upload PDF → Process → Chat with Groq LLMs for free!*")
 
 col1, col2 = st.columns([3, 1])
@@ -100,11 +100,11 @@ with col1:
             tmp.write(uploaded_file.getvalue())
             pdf_path = tmp.name
 
-        if st.button("🔄 Process PDF", type="primary"):
+        if st.button(" Process PDF", type="primary"):
             with st.spinner("Processing (local embeddings, no cost)..."):
                 st.session_state.vectorstore = process_pdf(pdf_path)
                 st.session_state.messages = []
-                st.success("✅ Ready to chat!")
+                st.success(" Ready to chat!")
 
 with col2:
     if st.session_state.vectorstore:
