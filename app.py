@@ -41,13 +41,13 @@ def process_pdf(_pdf_path):
 
 # Sidebar: Groq API key (free at console.groq.com)
 with st.sidebar:
-    st.header(" Groq API Key")
+    st.header("🔑 Groq API Key")
     api_key = st.text_input(
         "Groq API Key", type="password",
         help="Get a free key at https://console.groq.com"
     )
     if not api_key:
-        st.warning(" Enter your Groq API key to continue.")
+        st.warning("⚠️ Enter your Groq API key to continue.")
         st.stop()
     os.environ["GROQ_API_KEY"] = api_key
 
@@ -88,7 +88,7 @@ Answer:""")
     return chain
 
 # UI
-st.title(" RAG PDF Chatbot (Groq)")
+st.title("📚 RAG PDF Chatbot (Groq)")
 st.markdown("*Upload PDF → Process → Chat with Groq LLMs for free!*")
 
 col1, col2 = st.columns([3, 1])
@@ -100,17 +100,17 @@ with col1:
             tmp.write(uploaded_file.getvalue())
             pdf_path = tmp.name
 
-        if st.button(" Process PDF", type="primary"):
+        if st.button("🔄 Process PDF", type="primary"):
             with st.spinner("Processing (local embeddings, no cost)..."):
                 st.session_state.vectorstore = process_pdf(pdf_path)
                 st.session_state.messages = []
-                st.success(" Ready to chat!")
+                st.success("✅ Ready to chat!")
 
 with col2:
     if st.session_state.vectorstore:
-        st.success(" PDF Loaded!")
+        st.success("📄 PDF Loaded!")
     else:
-        st.info(" Upload PDF first")
+        st.info("👆 Upload PDF first")
 
 # Chat
 if st.session_state.vectorstore:
@@ -136,9 +136,9 @@ if st.session_state.vectorstore:
                 except Exception as e:
                     st.error(f"Error: {e}")
 
-    if st.button(" Clear Chat"):
+    if st.button("🗑️ Clear Chat"):
         st.session_state.messages = []
         st.rerun()
 
 else:
-    st.info(" Upload & process a PDF first!")
+    st.info("👆 Upload & process a PDF first!")
