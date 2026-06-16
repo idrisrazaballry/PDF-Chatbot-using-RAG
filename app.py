@@ -136,9 +136,9 @@ if st.session_state.vectorstore:
                 except Exception as e:
                     st.error(f"Error: {e}")
 
-    if st.button("🗑️ Clear Chat"):
+    if st.button("Clear Chat"):
         st.session_state.messages = []
         st.rerun()
 
 else:
-    st.info("👆 Upload & process a PDF first!")
+    st.info("Upload & process a PDF first!")
