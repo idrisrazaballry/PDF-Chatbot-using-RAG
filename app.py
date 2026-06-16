@@ -108,9 +108,9 @@ with col1:
 
 with col2:
     if st.session_state.vectorstore:
-        st.success("📄 PDF Loaded!")
+        st.success(" PDF Loaded!")
     else:
-        st.info("👆 Upload PDF first")
+        st.info("Upload PDF first")
 
 # Chat
 if st.session_state.vectorstore:
