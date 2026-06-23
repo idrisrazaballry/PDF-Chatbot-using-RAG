@@ -109,6 +109,3 @@ else:
     -  Fast on laptop (Phi-3 mini)
     -  Real RAG implementation
     """)
-
-
-
