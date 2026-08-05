@@ -7,3 +7,4 @@ langchain-huggingface==0.1.0
 faiss-cpu==1.14.3
 pypdf==5.1.0
 sentence-transformers==3.0.0
+Pillow==11.0.0
