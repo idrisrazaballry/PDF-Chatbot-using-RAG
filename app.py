@@ -42,13 +42,18 @@ def process_pdf(_pdf_path):
 # Sidebar: Groq API key (free at console.groq.com)
 with st.sidebar:
     st.header("Groq API Key")
-    api_key = st.text_input(
-        "Groq API Key", type="password",
-        help="Get a free key at https://console.groq.com"
-    )
+    # Try to get key from Streamlit secrets first, fall back to user input
+    api_key = st.secrets.get("GROQ_API_KEY", "")
+    
     if not api_key:
-        st.warning("Enter your Groq API key to continue.")
-        st.stop()
+        api_key = st.text_input(
+            "Groq API Key", type="password",
+            help="Get a free key at https://console.groq.com"
+        )
+        if not api_key:
+            st.warning("Enter your Groq API key to continue.")
+            st.stop()
+    
     os.environ["GROQ_API_KEY"] = api_key
 
     model_choice = st.selectbox(
